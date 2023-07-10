@@ -30,9 +30,8 @@ install(DIRECTORY libserial
 #
 if (INSTALL_STATIC)
     install(TARGETS libserial_static
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+            EXPORT serialport
+            DESTINATION ${${CMAKE_CURRENT_SOURCE_DIR}})
 endif()
 #
 # Use the same name (libserial) for both the static and shared libraries
@@ -59,8 +58,8 @@ if (INSTALL_SHARED)
         VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}
         SOVERSION ${PROJECT_VERSION_MAJOR}
     )
+
     install(TARGETS libserial_shared
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+            EXPORT serialport
+            DESTINATION ${${CMAKE_CURRENT_SOURCE_DIR}})
 endif()
